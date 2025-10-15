@@ -141,14 +141,12 @@ export default function LandingPage({ initialAuthModal }: LandingPageProps) {
     
     if (token && user) {
       setIsUserLoggedIn(true);
-      // If trying to access auth pages while logged in, redirect to dashboard
-      if (initialAuthModal) {
-        navigate("/dashboard", { replace: true });
-      }
+      // Redirect logged-in users to dashboard from landing page
+      navigate("/dashboard", { replace: true });
     } else {
       setIsUserLoggedIn(false);
     }
-  }, [initialAuthModal, navigate]);
+  }, [navigate]);
 
   useEffect(() => {
     const interval = setInterval(() => {
